@@ -32,12 +32,26 @@ object Screen extends JFXApp{
                   if (matrix(i)(j)) pixelCanvas.plotPixels(i, j)
                   else pixelCanvas.removePixel(i,j)
                 }
+                matrix = pixelCanvas.getStartingMatrix
             }
           }
 
+          private val resetButton = new Button("Reset") {
+            handleEvent(ActionEvent.Any) {
+              _: ActionEvent =>
+                matrix = initGOL(NMatrix)
+                for (j <- 0 until NMatrix;
+                     i <- 0 until NMatrix) {
+                  if (matrix(i)(j)) pixelCanvas.plotPixels(i, j)
+                  else pixelCanvas.removePixel(i,j)
+                }
+                matrix = pixelCanvas.getStartingMatrix
+            }
+          }
           content = List(
             new Separator,
-            nextButton)
+            nextButton,
+            resetButton)
         }
 
 

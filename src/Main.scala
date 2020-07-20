@@ -2,7 +2,7 @@ import scala.Array.ofDim
 import GameOfLife._
 
 object Main {
-  def NMatrix = 10
+  def NMatrix = 100
   def printMatrix(matrix: Array[Array[Boolean]]) {
     for (j <- 0 until NMatrix;
          i <- 0 until NMatrix) {
