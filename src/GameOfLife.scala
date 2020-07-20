@@ -7,11 +7,64 @@ object GameOfLife {
          i <- 0 until num) {
       matrix(i)(j) = false
     }
+
+    //Glider
     matrix(1)(3) = true
     matrix(2)(3) = true
     matrix(3)(3) = true
     matrix(3)(2) = true
     matrix(2)(1) = true
+
+    //Tumbler
+    matrix(90)(5) = true
+    matrix(91)(5) = true
+    matrix(90)(6) = true
+    matrix(91)(6) = true
+    matrix(93)(5) = true
+    matrix(94)(5) = true
+    matrix(93)(6) = true
+    matrix(94)(6) = true
+    matrix(91)(7) = true
+    matrix(91)(8) = true
+    matrix(91)(9) = true
+    matrix(90)(10) = true
+    matrix(89)(10) = true
+    matrix(89)(9) = true
+    matrix(89)(8) = true
+    matrix(93)(7) = true
+    matrix(93)(8) = true
+    matrix(93)(9) = true
+    matrix(94)(10) = true
+    matrix(95)(10) = true
+    matrix(95)(9) = true
+    matrix(95)(8) = true
+
+    //Exploder
+    matrix(10)(30) = true
+    matrix(10)(31) = true
+    matrix(10)(32) = true
+    matrix(10)(33) = true
+    matrix(10)(34) = true
+    matrix(12)(30) = true
+    matrix(12)(34) = true
+    matrix(14)(30) = true
+    matrix(14)(31) = true
+    matrix(14)(32) = true
+    matrix(14)(33) = true
+    matrix(14)(34) = true
+
+    //10 Cell Row
+    matrix(40)(10) = true
+    matrix(41)(10) = true
+    matrix(42)(10) = true
+    matrix(43)(10) = true
+    matrix(44)(10) = true
+    matrix(45)(10) = true
+    matrix(46)(10) = true
+    matrix(47)(10) = true
+    matrix(48)(10) = true
+    matrix(49)(10) = true
+
     matrix
   }
 
