@@ -6,7 +6,7 @@ import scalafx.scene.paint.Color._
 
 class Pixel extends Canvas{
   val gc: GraphicsContext = graphicsContext2D
-  gc.fill = White
+  gc.fill = Blue
 
 
   def clear(): Unit = {
