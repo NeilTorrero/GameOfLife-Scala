@@ -18,5 +18,12 @@ object Main {
   def main(args: Array[String]) {
     val gol = new GameOfLife(NMatrix)
     gol.initGOL()
+    while(true) {
+      if (scala.io.StdIn.readLine() == "y") {
+        print("\n\tNext Generation\n")
         printMatrix(gol)
+        gol.nextGen()
+      }
+    }
+  }
 }
