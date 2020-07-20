@@ -1,13 +1,15 @@
 import GameOfLife.{initGOL, nextGen}
 import Main.{NMatrix, printMatrix}
 import scalafx.Includes._
+import scalafx.animation.{KeyFrame, Timeline}
 import scalafx.application.JFXApp
 import scalafx.event.ActionEvent
-import scalafx.scene.control.{Button, Separator, ToolBar}
+import scalafx.scene.control.{Button, Separator, ToggleButton, ToolBar}
 import scalafx.scene.{Group, Scene}
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Rectangle
+import scalafx.util.Duration
 
 import scala.Array.ofDim
 
@@ -22,6 +24,31 @@ object Screen extends JFXApp{
       root = new BorderPane {
 
         top = new ToolBar {
+          private val animate = new Timeline {
+            cycleCount = Timeline.Indefinite
+            keyFrames = KeyFrame(Duration(100), onFinished = _ => {
+              printMatrix(matrix)
+              matrix = nextGen(matrix, NMatrix)
+              for (j <- 0 until NMatrix;
+                   i <- 0 until NMatrix) {
+                if (matrix(i)(j)) pixelCanvas.plotPixels(i, j)
+                else pixelCanvas.removePixel(i,j)
+              }
+              matrix = pixelCanvas.getStartingMatrix
+            })
+          }
+
+
+          private val playButton = new ToggleButton("Play") {
+            handleEvent(ActionEvent.Action) {
+              _: ActionEvent =>
+                if (!selected.value) {
+                  animate.pause()
+                } else {
+                  animate.play()
+                }
+            }
+          }
           private val nextButton = new Button("Next") {
             handleEvent(ActionEvent.Any) {
               _: ActionEvent =>
@@ -50,6 +77,7 @@ object Screen extends JFXApp{
           }
           content = List(
             new Separator,
+            playButton,
             nextButton,
             resetButton)
         }
