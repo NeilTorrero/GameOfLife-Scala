@@ -17,7 +17,7 @@ class Pixel extends Canvas{
     gc.fillRect(x * 10, y * 10, 10, 10)
   }
 
-  def removeCell(x: Long, y: Long): Unit = {
+  def removePixel(x: Long, y: Long): Unit = {
     gc.clearRect(x * 10, y * 10, 10, 10)
   }
 
