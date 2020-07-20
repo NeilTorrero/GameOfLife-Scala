@@ -1,9 +1,12 @@
+import scala.Array.ofDim
+import GameOfLife._
+
 object Main {
   def NMatrix = 10
-  def printMatrix(gol: GameOfLife) {
+  def printMatrix(matrix: Array[Array[Boolean]]) {
     for (j <- 0 until NMatrix;
          i <- 0 until NMatrix) {
-      if (gol.matrix(i)(j)) {
+      if (matrix(i)(j)) {
         print("[x]")
       } else {
         print("[ ]")
@@ -16,13 +19,13 @@ object Main {
 
 
   def main(args: Array[String]) {
-    val gol = new GameOfLife(NMatrix)
-    gol.initGOL()
+    var matrix: Array[Array[Boolean]] = ofDim[Boolean](NMatrix, NMatrix)
+    matrix = initGOL(NMatrix)
     while(true) {
       if (scala.io.StdIn.readLine() == "y") {
         print("\n\tNext Generation\n")
-        printMatrix(gol)
-        gol.nextGen()
+        printMatrix(matrix)
+        matrix = nextGen(matrix, NMatrix)
       }
     }
   }
