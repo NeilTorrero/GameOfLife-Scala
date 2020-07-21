@@ -27,7 +27,7 @@ object Screen extends JFXApp{
           private val animate = new Timeline {
             cycleCount = Timeline.Indefinite
             keyFrames = KeyFrame(Duration(100), onFinished = _ => {
-              printMatrix(matrix)
+              //printMatrix(matrix)
               matrix = nextGen(matrix, NMatrix)
               for (j <- 0 until NMatrix;
                    i <- 0 until NMatrix) {
@@ -42,17 +42,14 @@ object Screen extends JFXApp{
           private val playButton = new ToggleButton("Play") {
             handleEvent(ActionEvent.Action) {
               _: ActionEvent =>
-                if (!selected.value) {
-                  animate.pause()
-                } else {
-                  animate.play()
-                }
+                if (!selected.value) animate.pause()
+                else animate.play()
             }
           }
           private val nextButton = new Button("Next") {
             handleEvent(ActionEvent.Any) {
               _: ActionEvent =>
-                printMatrix(matrix)
+                //printMatrix(matrix)
                 matrix = nextGen(matrix, NMatrix)
                 for (j <- 0 until NMatrix;
                      i <- 0 until NMatrix) {
