@@ -34,7 +34,11 @@ class Pixel extends Canvas{
         case MouseClicked | MouseDragged =>
           val x = ((me.x - (me.x % 10)) / 10).toLong
           val y = ((me.y - (me.y % 10)) / 10).toLong
-          plotPixels(x, y)
+          if (matrix(x.toInt)(y.toInt)) {
+            removePixel(x,y)
+          } else {
+            plotPixels(x,y)
+          }
         case _ =>
       }
       me.consume()
